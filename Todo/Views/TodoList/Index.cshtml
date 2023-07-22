@@ -1,0 +1,31 @@
+﻿@model List<Todo.Models.TodoList>
+
+<h1>
+    TODO Liste
+</h1>
+
+<table>
+    @foreach (TodoList todoList in Model)
+    {
+        <tr>
+            <td>
+                @todoList.Id
+            </td>
+            <td>
+                @todoList.Naziv
+            </td>
+            <td>
+                @(todoList.Status ? "Riješeno" : "Neriješeno")
+            </td>
+            <td>
+                <a asp-controller="TodoTask" asp-action="Index" asp-route-todo_list_id="@todoList.Id">Taskovi</a>
+            </td>
+        </tr>
+    }
+</table>
+
+<hr />
+
+<h2>
+    <a asp-controller="TodoList" asp-action="Create">Kreiraj novu TODO listu</a>
+</h2>

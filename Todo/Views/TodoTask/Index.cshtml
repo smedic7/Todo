@@ -1,0 +1,31 @@
+﻿@model List<Todo.Models.TodoTask>
+
+<h2>Todo Tasks</h2>
+
+@if (Model != null && Model.Count > 0)
+{
+    <ul>
+        @foreach (var task in Model)
+        {
+            <li>
+                @task.Description
+                @if (task.Status)
+                {
+                    <span style="color:green;">(Completed)</span>
+                }
+                else
+                {
+                    <span style="color:red;">(Not Completed)</span>
+                }
+                <a asp-controller="TodoTask" asp-action="Edit" asp-route-id="@task.Id">Uredi</a>
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>No todo tasks found for this list.</p>
+}
+
+<p><a asp-action="Create" asp-route-todolistId="@ViewBag.TodoList.Id">Create a new task</a></p>
+<p><a asp-action="Index" asp-route-todo_list_id="@ViewBag.TodoList.Id">Back to todo lists</a></p>

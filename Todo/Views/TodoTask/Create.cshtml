@@ -1,0 +1,26 @@
+﻿@model Todo.Models.TodoTask
+
+<h2>Create Todo Task</h2>
+
+@if (ViewBag.TodoList != null)
+{
+    <form asp-action="Create" method="post">
+        <div class="form-group">
+            <label asp-for="Description">Task Description:</label>
+            <input asp-for="Description" class="form-control" />
+        </div>
+        <div class="form-group">
+            <label asp-for="Status">Status:</label>
+            <input asp-for="Status" type="checkbox" />
+        </div>
+
+        <input type="hidden" asp-for="TodoListId" />
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+}
+else
+{
+    <p>Todo List not found!</p>
+}
+
+<p><a asp-action="Index" asp-route-todo_list_id="@ViewBag.TodoList?.Id">Back to todo tasks</a></p>

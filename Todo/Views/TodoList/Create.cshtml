@@ -1,0 +1,13 @@
+﻿    @model Todo.Models.TodoList
+
+    <h2>Create Todo List</h2>
+
+    <form asp-action="Create">
+        <div class="form-group">
+            <label asp-for="Naziv">Name:</label>
+            <input asp-for="Naziv" class="form-control" />
+        </div>
+        <button type="submit" class="btn btn-primary">Create</button>
+    </form>
+
+    <p><a asp-action="Index">Back to todo lists</a></p>
